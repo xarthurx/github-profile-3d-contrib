@@ -16,20 +16,19 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: '20'
-          cache: 'npm'
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --no-save
 
       - name: Generate demo theme previews
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
           SETTING_JSON: sample-settings/theme-preview.json
-        run: node_modules/.bin/ts-node src/index.ts
+        run: bunx ts-node src/index.ts
 
       - name: Commit & push demo updates
         run: |

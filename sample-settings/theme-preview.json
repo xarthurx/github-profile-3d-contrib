@@ -1,7 +1,7 @@
 [
   {
     "type": "normal",
-    "fileName": "docs/demo/nord-light.svg",
+    "fileName": "../docs/demo/nord-light.svg",
     "backgroundColor": "#eceff4",
     "foregroundColor": "#2e3440",
     "strongColor": "#3b4252",
@@ -12,7 +12,7 @@
   },
   {
     "type": "normal",
-    "fileName": "docs/demo/nord-dark.svg",
+    "fileName": "../docs/demo/nord-dark.svg",
     "backgroundColor": "#2e3440",
     "foregroundColor": "#eceff4",
     "strongColor": "#ebcb8b",
@@ -23,7 +23,7 @@
   },
   {
     "type": "normal",
-    "fileName": "docs/demo/solarized-light.svg",
+    "fileName": "../docs/demo/solarized-light.svg",
     "backgroundColor": "#fdf6e3",
     "foregroundColor": "#657b83",
     "strongColor": "#586e75",
@@ -34,7 +34,7 @@
   },
   {
     "type": "normal",
-    "fileName": "docs/demo/solarized-dark.svg",
+    "fileName": "../docs/demo/solarized-dark.svg",
     "backgroundColor": "#002b36",
     "foregroundColor": "#eee8d5",
     "strongColor": "#b58900",
@@ -45,7 +45,7 @@
   },
   {
     "type": "normal",
-    "fileName": "docs/demo/gruvbox-light.svg",
+    "fileName": "../docs/demo/gruvbox-light.svg",
     "backgroundColor": "#fbf1c7",
     "foregroundColor": "#3c3836",
     "strongColor": "#af3a03",
@@ -56,7 +56,7 @@
   },
   {
     "type": "normal",
-    "fileName": "docs/demo/gruvbox-dark.svg",
+    "fileName": "../docs/demo/gruvbox-dark.svg",
     "backgroundColor": "#282828",
     "foregroundColor": "#ebdbb2",
     "strongColor": "#fabd2f",
@@ -67,7 +67,7 @@
   },
   {
     "type": "normal",
-    "fileName": "docs/demo/rose-pine-light.svg",
+    "fileName": "../docs/demo/rose-pine-light.svg",
     "backgroundColor": "#faf4ed",
     "foregroundColor": "#575279",
     "strongColor": "#d7827e",
@@ -78,7 +78,7 @@
   },
   {
     "type": "normal",
-    "fileName": "docs/demo/rose-pine-dark.svg",
+    "fileName": "../docs/demo/rose-pine-dark.svg",
     "backgroundColor": "#191724",
     "foregroundColor": "#e0def4",
     "strongColor": "#ebbcba",
@@ -89,7 +89,7 @@
   },
   {
     "type": "normal",
-    "fileName": "docs/demo/graphite-light.svg",
+    "fileName": "../docs/demo/graphite-light.svg",
     "backgroundColor": "#f7f7f5",
     "foregroundColor": "#2b2b2b",
     "strongColor": "#111111",
@@ -100,7 +100,7 @@
   },
   {
     "type": "normal",
-    "fileName": "docs/demo/graphite-dark.svg",
+    "fileName": "../docs/demo/graphite-dark.svg",
     "backgroundColor": "#141414",
     "foregroundColor": "#e6e6e6",
     "strongColor": "#f4a261",
