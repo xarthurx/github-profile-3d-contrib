@@ -1,6 +1,6 @@
 # GitHub Profile 3D Contrib
 
-![svg](https://raw.githubusercontent.com/yoshi389111/github-profile-3d-contrib/main/docs/demo/profile-gitblock.svg)
+![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-gitblock.svg)
 
 <!-- Language code order (except English) -->
 English (en) |
@@ -64,7 +64,7 @@ jobs:
     name: generate-github-profile-3d-contrib
     steps:
       - uses: actions/checkout@v5
-      - uses: yoshi389111/github-profile-3d-contrib@latest
+      - uses: xarthurx/github-profile-3d-contrib@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
@@ -95,7 +95,7 @@ In the sample, only `GITHUB_TOKEN` and `USERNAME` are specified as environment v
 - `GITHUB_TOKEN` : (required) access token
 - `USERNAME` : (required) target username (or specify with an argument).
 - `MAX_REPOS` : (optional) max repositories, default 100 - since ver. 0.2.0
-- `SETTING_JSON` : (optional) settings json file path. See `sample-settings/*.json` and `src/type.ts` in `yoshi389111/github-profile-3d-contrib` repository for details. - since ver. 0.6.0
+- `SETTING_JSON` : (optional) settings json file path. See `sample-settings/*.json` and `src/type.ts` in `xarthurx/github-profile-3d-contrib` repository for details. - since ver. 0.6.0
 - `GITHUB_ENDPOINT` : (optional) Github GraphQL endpoint. For example, if you want to create a contribution calendar based on your company's GitHub Enterprise activity instead of GitHub.com, set this environment variable. e.g. `https://github.mycompany.com/api/graphql` - since ver. 0.8.0
 - `YEAR` : (optional) For past calendars, specify the year. This is intended to be specified when running the tool from the command line. - since ver. 0.8.0
 
@@ -167,35 +167,36 @@ You can use these images in your README.md as shown below.
 
 Example: green version
 
-![svg](https://raw.githubusercontent.com/yoshi389111/github-profile-3d-contrib/main/docs/demo/profile-green-animate.svg)
+![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-green-animate.svg)
 
 Example: season version (Northern Hemisphere.)
 
-![svg](https://raw.githubusercontent.com/yoshi389111/github-profile-3d-contrib/main/docs/demo/profile-season-animate.svg)
+![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-season-animate.svg)
 
 Example: season version (Southern Hemisphere.)
 
-![svg](https://raw.githubusercontent.com/yoshi389111/github-profile-3d-contrib/main/docs/demo/profile-south-season-animate.svg)
+![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-south-season-animate.svg)
 
 Example: night view version
 
-![svg](https://raw.githubusercontent.com/yoshi389111/github-profile-3d-contrib/main/docs/demo/profile-night-view.svg)
+![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-night-view.svg)
 
 Example: night green version
 
-![svg](https://raw.githubusercontent.com/yoshi389111/github-profile-3d-contrib/main/docs/demo/profile-night-green.svg)
+![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-night-green.svg)
 
 Example: night rainbow version
 
-![svg](https://raw.githubusercontent.com/yoshi389111/github-profile-3d-contrib/main/docs/demo/profile-night-rainbow.svg)
+![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-night-rainbow.svg)
 
 Example: git block version
 
-![svg](https://raw.githubusercontent.com/yoshi389111/github-profile-3d-contrib/main/docs/demo/profile-gitblock.svg)
+![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-gitblock.svg)
 
 ### Theme previews (custom)
 
 These previews are generated using custom settings JSON.
+The workflow `.github/workflows/update-demo.yml` regenerates them on push using `sample-settings/theme-preview.json`.
 
 **Nord**
 <p>

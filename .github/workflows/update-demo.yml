@@ -1,0 +1,44 @@
+name: Update Demo Theme Previews
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  update-demo:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate demo theme previews
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: sample-settings/theme-preview.json
+        run: node_modules/.bin/ts-node src/index.ts
+
+      - name: Commit & push demo updates
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add docs/demo sample-settings/theme-preview.json
+          if git diff --cached --quiet; then
+            echo "No demo updates to commit."
+            exit 0
+          fi
+          git commit -m "Update demo theme previews"
+          git push
