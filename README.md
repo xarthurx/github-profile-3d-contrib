@@ -2,26 +2,6 @@
 
 ![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-gitblock.svg)
 
-<!-- Language code order (except English) -->
-English (en) |
-[Deutsch (de)](docs/README.de.md) |
-[Español (es)](docs/README.es.md) |
-[Français (fr)](docs/README.fr.md) |
-[日本語 (ja)](docs/README.ja.md) |
-[한국어 (ko)](docs/README.ko.md) |
-[Português (pt-BR)](docs/README.pt-br.md) |
-[Português (pt)](docs/README.pt.md) |
-[Русский (ru)](docs/README.ru.md) |
-[简体中文 (zh-CN)](docs/README.zh-CN.md) |
-[繁體中文 (zh-TW)](docs/README.zh-TW.md) |
-
-<!--
-> [!NOTE]
-> This translation was generated with machine translation.
-> It may contain errors or unnatural expressions.
-> Contributions to improve the translation are welcome!
- -->
-
 ## Overview
 
 This GitHub Action creates a GitHub contribution calendar on a 3D profile image.
@@ -162,36 +142,6 @@ The profile images are generated at the following paths:
 If you specify the `SETTING_JSON` environment variable without a `fileName` property in the json file, the following image will be generated:
 
 - `profile-3d-contrib/profile-customize.svg`
-
-You can use these images in your README.md as shown below.
-
-Example: green version
-
-![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-green-animate.svg)
-
-Example: season version (Northern Hemisphere.)
-
-![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-season-animate.svg)
-
-Example: season version (Southern Hemisphere.)
-
-![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-south-season-animate.svg)
-
-Example: night view version
-
-![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-night-view.svg)
-
-Example: night green version
-
-![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-night-green.svg)
-
-Example: night rainbow version
-
-![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-night-rainbow.svg)
-
-Example: git block version
-
-![svg](https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/profile-gitblock.svg)
 
 ### Theme previews (custom)
 
