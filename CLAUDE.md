@@ -3,7 +3,7 @@
 ## Overview
 
 Forked GitHub Action that generates animated 3D isometric contribution calendars as SVG.
-Source repo: `xarthurx/github-profile-3d-contrib`. Used by the profile repo `xarthurx/xarthurx`.
+Source repo: `xarthurx/github-3d-profile`. Used by the profile repo `xarthurx/xarthurx`.
 
 ## Build & Test
 

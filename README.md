@@ -1,8 +1,8 @@
-# GitHub Profile 3D Contrib
+# GitHub 3D Profile
 
 <p>
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/nord-light.svg" width="49%" />
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/nord-dark.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/nord-light.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/nord-dark.svg" width="49%" />
 </p>
 
 ## Overview
@@ -35,7 +35,7 @@ Create a workflow file like the one below.
 - `.github/workflows/profile-3d.yml`
 
 ```yaml:.github/workflows/profile-3d.yml
-name: GitHub-Profile-3D-Contrib
+name: GitHub-3D-Profile
 
 on:
   schedule: # 03:00 JST == 18:00 UTC
@@ -48,10 +48,10 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: generate-github-profile-3d-contrib
+    name: generate-github-3d-profile
     steps:
       - uses: actions/checkout@v5
-      - uses: xarthurx/github-profile-3d-contrib@main
+      - uses: xarthurx/github-3d-profile@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
@@ -82,7 +82,7 @@ In the sample, only `GITHUB_TOKEN` and `USERNAME` are specified as environment v
 - `GITHUB_TOKEN` : (required) access token
 - `USERNAME` : (required) target username (or specify with an argument).
 - `MAX_REPOS` : (optional) max repositories, default 100 - since ver. 0.2.0
-- `SETTING_JSON` : (optional) settings json file path. See `sample-settings/*.json` and `src/type.ts` in `xarthurx/github-profile-3d-contrib` repository for details. - since ver. 0.6.0
+- `SETTING_JSON` : (optional) settings json file path. See `sample-settings/*.json` and `src/type.ts` in `xarthurx/github-3d-profile` repository for details. - since ver. 0.6.0
 - `GITHUB_ENDPOINT` : (optional) Github GraphQL endpoint. For example, if you want to create a contribution calendar based on your company's GitHub Enterprise activity instead of GitHub.com, set this environment variable. e.g. `https://github.mycompany.com/api/graphql` - since ver. 0.8.0
 - `YEAR` : (optional) For past calendars, specify the year. This is intended to be specified when running the tool from the command line. - since ver. 0.8.0
 - `OUTPUT_DIR` : (optional) Custom output directory, default `./profile-3d-contrib`
@@ -132,7 +132,7 @@ However, please note that the time must be specified in UTC.
 
 The first time, run this workflow manually.
 
-- `Actions` -> `GitHub-Profile-3D-Contrib` -> `Run workflow`
+- `Actions` -> `GitHub-3D-Profile` -> `Run workflow`
 
 By default (without `SETTING_JSON`), the following profile images are generated:
 
@@ -167,32 +167,32 @@ The workflow `.github/workflows/update-demo.yml` regenerates them on push using 
 
 **Nord**
 <p>
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/nord-light.svg" width="49%" />
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/nord-dark.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/nord-light.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/nord-dark.svg" width="49%" />
 </p>
 
 **Solarized**
 <p>
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/solarized-light.svg" width="49%" />
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/solarized-dark.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/solarized-light.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/solarized-dark.svg" width="49%" />
 </p>
 
 **Gruvbox**
 <p>
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/gruvbox-light.svg" width="49%" />
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/gruvbox-dark.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/gruvbox-light.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/gruvbox-dark.svg" width="49%" />
 </p>
 
 **Rose Pine**
 <p>
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/rose-pine-light.svg" width="49%" />
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/rose-pine-dark.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/rose-pine-light.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/rose-pine-dark.svg" width="49%" />
 </p>
 
 **Graphite**
 <p>
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/graphite-light.svg" width="49%" />
-  <img src="https://raw.githubusercontent.com/xarthurx/github-profile-3d-contrib/main/docs/demo/graphite-dark.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/graphite-light.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/graphite-dark.svg" width="49%" />
 </p>
 
 ### Step 4. Add image to README.md

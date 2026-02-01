@@ -1,5 +1,5 @@
-name: GitHub-Profile-3D-Contrib
-description: Generate profile 3D Contributions
+name: GitHub-3D-Profile
+description: Generate animated 3D isometric contribution calendar as SVG
 author: xarthurx
 
 runs:

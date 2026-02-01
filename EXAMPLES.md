@@ -11,8 +11,8 @@ Create a repository on GitHub with the same name as your user name.
 
 In this repository, do the following.
 
-### 2. Create `conf/github-profile-3d-contrib.json` file in your <username> repo:
-```json:conf/github-profile-3d-contrib.json
+### 2. Create `conf/github-3d-profile.json` file in your <username> repo:
+```json:conf/github-3d-profile.json
 [
     {
         "type": "normal",
@@ -75,14 +75,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: generate-github-profile-3d-contrib
+    name: generate-github-3d-profile
     steps:
       - uses: actions/checkout@v5
-      - uses: xarthurx/github-profile-3d-contrib@main
+      - uses: xarthurx/github-3d-profile@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
-          SETTING_JSON: conf/github-profile-3d-contrib.json
+          SETTING_JSON: conf/github-3d-profile.json
           
       # push the content of <build_dir> to a branch
       # the content will be available at https://raw.githubusercontent.com/<github_user>/<repository>/<target_branch>/<file> , or as github page
