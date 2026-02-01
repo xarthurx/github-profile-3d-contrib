@@ -195,7 +195,7 @@ export const createSvg = (
             .text(contribLabel)
             .attr('class', 'fill-fg');
 
-        const positionXStar = 190;
+        const positionXStar = 280;
         const positionYStar = positionYContrib;
 
         // icon of star
@@ -228,7 +228,7 @@ export const createSvg = (
             .append('title')
             .text(userInfo.totalStargazerCount);
 
-        const positionXFork = 330;
+        const positionXFork = 390;
         const positionYFork = positionYContrib;
 
         // icon of fork
