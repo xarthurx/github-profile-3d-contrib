@@ -1,8 +1,8 @@
 # GitHub 3D Profile
 
 <p>
-  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/nord-light.svg" width="49%" />
-  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/nord-dark.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/solarized-light.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/solarized-dark.svg" width="49%" />
 </p>
 
 ## Overview
@@ -15,7 +15,7 @@ This GitHub Action creates a GitHub contribution calendar on a 3D profile image.
 
 ## How to use (GitHub Actions) - Basic
 
-This GitHub Action generates your github profile 3d contribution calendar and commits to your repo.
+This GitHub Action generates your GitHub profile 3D contribution calendar and commits it to your repo.
 After adding the GitHub Action, the workflow runs automatically once a day.
 You can also trigger the workflow manually.
 
@@ -51,7 +51,7 @@ jobs:
     name: generate-github-3d-profile
     steps:
       - uses: actions/checkout@v5
-      - uses: xarthurx/github-3d-profile@main
+      - uses: xarthurx/github-3d-profile@v1.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
@@ -77,15 +77,15 @@ This will add the workflow to your repository.
 
 #### Environment variables
 
-In the sample, only `GITHUB_TOKEN` and `USERNAME` are specified as environment variables, but you can specify the following environment variables:
-
-- `GITHUB_TOKEN` : (required) access token
-- `USERNAME` : (required) target username (or specify with an argument).
-- `MAX_REPOS` : (optional) max repositories, default 100 - since ver. 0.2.0
-- `SETTING_JSON` : (optional) settings json file path. See `sample-settings/*.json` and `src/type.ts` in `xarthurx/github-3d-profile` repository for details. - since ver. 0.6.0
-- `GITHUB_ENDPOINT` : (optional) Github GraphQL endpoint. For example, if you want to create a contribution calendar based on your company's GitHub Enterprise activity instead of GitHub.com, set this environment variable. e.g. `https://github.mycompany.com/api/graphql` - since ver. 0.8.0
-- `YEAR` : (optional) For past calendars, specify the year. This is intended to be specified when running the tool from the command line. - since ver. 0.8.0
-- `OUTPUT_DIR` : (optional) Custom output directory, default `./profile-3d-contrib`
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `GITHUB_TOKEN` | Yes | Access token (use `secrets.GITHUB_TOKEN` or a personal access token) |
+| `USERNAME` | Yes | Target GitHub username (or pass as a CLI argument) |
+| `SETTING_JSON` | No | Path to a custom settings JSON file. See `sample-settings/*.json` and `src/type.ts` for details |
+| `MAX_REPOS` | No | Maximum repositories to query (default: 100) |
+| `GITHUB_ENDPOINT` | No | GitHub GraphQL endpoint, e.g. `https://github.mycompany.com/api/graphql` for GitHub Enterprise |
+| `YEAR` | No | Generate a past year's calendar (intended for CLI use) |
+| `OUTPUT_DIR` | No | Custom output directory (default: `./profile-3d-contrib`) |
 
 #### About `GITHUB_TOKEN`
 
@@ -116,17 +116,15 @@ Set that secret as the value of the `GITHUB_TOKEN` environment variable.
 #### About the time to schedule
 
 In the sample, it is set to start at 18:00 UTC.
-This is because it will run at midnight JST, which is the author's local time.
-
-```yaml
-on:
-  schedule: # 03:00 JST == 18:00 UTC
-    - cron: "0 18 * * *"
-```
-
 You can change it to any time you like.
 We recommend midnight (around 3am) your local time.
 However, please note that the time must be specified in UTC.
+
+```yaml
+on:
+  schedule:
+    - cron: "0 18 * * *"
+```
 
 ### Step 3. Manually run this GitHub Action
 
@@ -134,12 +132,12 @@ The first time, run this workflow manually.
 
 - `Actions` -> `GitHub-3D-Profile` -> `Run workflow`
 
-By default (without `SETTING_JSON`), the following profile images are generated:
+By default (without `SETTING_JSON`), the following profile images are generated using the Solarized theme:
 
 - `profile-3d-contrib/profile-solarized-light.svg`
 - `profile-3d-contrib/profile-solarized-dark.svg`
 
-When using `SETTING_JSON` with the custom themes (see below), the output files are named according to the `fileName` property in your JSON config. For example, with `sample-settings/theme-preview.json`:
+When using `SETTING_JSON` with custom themes, the output files are named according to the `fileName` property in your JSON config. For example, with `sample-settings/theme-preview.json`:
 
 - `profile-3d-contrib/nord-light.svg`
 - `profile-3d-contrib/nord-dark.svg`
@@ -152,21 +150,40 @@ When using `SETTING_JSON` with the custom themes (see below), the output files a
 - `profile-3d-contrib/graphite-light.svg`
 - `profile-3d-contrib/graphite-dark.svg`
 
-### Theme previews (custom)
+### Step 4. Add image to README.md
 
-These previews are generated using custom settings JSON.
-The workflow `.github/workflows/update-demo.yml` regenerates them on push using `sample-settings/theme-preview.json`.
+Add the path to the generated image in your README file.
+
+Example (default Solarized output):
+
+```md
+![](./profile-3d-contrib/profile-solarized-light.svg)
+```
+
+Example (automatic day/night switching):
+
+```html
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./profile-3d-contrib/profile-solarized-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="./profile-3d-contrib/profile-solarized-light.svg" />
+  <img alt="github profile contributions chart" src="./profile-3d-contrib/profile-solarized-light.svg" />
+</picture>
+```
+
+## Theme previews
+
+All themes include animated 3D blocks with wave effect, breathing pie chart, and themed pie colors.
+
+**Solarized** (default)
+<p>
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/solarized-light.svg" width="49%" />
+  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/solarized-dark.svg" width="49%" />
+</p>
 
 **Nord**
 <p>
   <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/nord-light.svg" width="49%" />
   <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/nord-dark.svg" width="49%" />
-</p>
-
-**Solarized**
-<p>
-  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/solarized-light.svg" width="49%" />
-  <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/solarized-dark.svg" width="49%" />
 </p>
 
 **Gruvbox**
@@ -186,16 +203,6 @@ The workflow `.github/workflows/update-demo.yml` regenerates them on push using 
   <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/graphite-light.svg" width="49%" />
   <img src="https://raw.githubusercontent.com/xarthurx/github-3d-profile/main/docs/demo/graphite-dark.svg" width="49%" />
 </p>
-
-### Step 4. Add image to README.md
-
-Add the path to the generated image in your README file.
-
-Example:
-
-```md
-![](./profile-3d-contrib/nord-light.svg)
-```
 
 ## How to use (GitHub Actions) - Advanced examples
 
