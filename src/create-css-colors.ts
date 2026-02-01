@@ -31,7 +31,7 @@ const createColors = (settings: type.Settings): string => {
         );
         cssColors.push(
             '.radar {',
-            'stroke-width: 4px;',
+            'stroke-width: 2px;',
             `stroke: ${settings.radarColor};`,
             `fill: ${settings.radarColor};`,
             `fill-opacity: 0.5;`,

@@ -120,7 +120,7 @@ export const createPieLanguage = (
         .append('g')
         .attr('transform', `translate(${radius}, ${radius})`);
 
-    // Breathing effect: subtle scale pulse after intro animation
+    // Breathing effect: subtle scale pulse + opacity after intro animation
     if (isAnimate) {
         pieGroup
             .append('animateTransform')
@@ -134,11 +134,18 @@ export const createPieLanguage = (
             .append('animateTransform')
             .attr('attributeName', 'transform')
             .attr('type', 'scale')
-            .attr('values', '1;1.03;1;0.97;1')
+            .attr('values', '1;1.015;1;0.985;1')
             .attr('dur', '5s')
             .attr('begin', '3s')
             .attr('repeatCount', 'indefinite')
             .attr('additive', 'sum');
+        pieGroup
+            .append('animate')
+            .attr('attributeName', 'opacity')
+            .attr('values', '1;0.85;1')
+            .attr('dur', '5s')
+            .attr('begin', '3s')
+            .attr('repeatCount', 'indefinite');
     }
 
     const paths = pieGroup

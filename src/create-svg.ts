@@ -52,13 +52,34 @@ export const createSvg = (
 
     contrib.addDefines(svg, settings);
 
-    // background
-    svg.append('rect')
-        .attr('x', 0)
-        .attr('y', 0)
-        .attr('width', svgWidth)
-        .attr('height', svgHeight)
-        .attr('class', 'fill-bg');
+    // background gradient
+    if (settings.type !== 'pie_lang_only' && settings.type !== 'radar_contrib_only') {
+        const bgColor = d3.rgb(settings.backgroundColor);
+        const isLight = (bgColor.r * 299 + bgColor.g * 587 + bgColor.b * 114) / 1000 > 128;
+        const bottomColor = isLight ? bgColor.darker(0.06) : bgColor.brighter(0.08);
+        const defs = svg.append('defs');
+        const grad = defs.append('linearGradient')
+            .attr('id', 'bg-gradient')
+            .attr('x1', '0')
+            .attr('y1', '0')
+            .attr('x2', '0')
+            .attr('y2', '1');
+        grad.append('stop').attr('offset', '0%').attr('stop-color', settings.backgroundColor);
+        grad.append('stop').attr('offset', '100%').attr('stop-color', bottomColor.toString());
+        svg.append('rect')
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr('width', svgWidth)
+            .attr('height', svgHeight)
+            .attr('fill', 'url(#bg-gradient)');
+    } else {
+        svg.append('rect')
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr('width', svgWidth)
+            .attr('height', svgHeight)
+            .attr('class', 'fill-bg');
+    }
 
     if (settings.type === 'pie_lang_only') {
         // pie chart only
@@ -97,6 +118,17 @@ export const createSvg = (
             isForcedAnimation,
         );
 
+        // card background behind radar chart
+        svg.append('rect')
+            .attr('x', radarX - 12)
+            .attr('y', 70 - 12)
+            .attr('width', radarWidth + 24)
+            .attr('height', radarHeight + 24)
+            .attr('rx', 12)
+            .attr('ry', 12)
+            .attr('class', 'fill-bg')
+            .style('opacity', '0.3');
+
         // radar chart
         radar.createRadarContrib(
             svg,
@@ -109,12 +141,26 @@ export const createSvg = (
             isForcedAnimation,
         );
 
+        const pieX = 50;
+        const pieY = height - pieHeight - 60;
+
+        // card background behind pie chart
+        svg.append('rect')
+            .attr('x', pieX - 12)
+            .attr('y', pieY - 12)
+            .attr('width', pieWidth + 24)
+            .attr('height', pieHeight + 24)
+            .attr('rx', 12)
+            .attr('ry', 12)
+            .attr('class', 'fill-bg')
+            .style('opacity', '0.3');
+
         // pie chart
         pie.createPieLanguage(
             svg,
             userInfo,
-            40,
-            height - pieHeight - 70,
+            pieX,
+            pieY,
             pieWidth,
             pieHeight,
             settings,
@@ -123,14 +169,14 @@ export const createSvg = (
 
         const group = svg.append('g');
 
-        // Stats bar: left-aligned below pie chart (compact)
+        // Stats bar: left-aligned below pie chart (compact, evenly spaced)
         const positionXContrib = 50;
         const positionYContrib = height - 30;
 
         group
             .append('text')
             .style('font-size', '22px')
-            .style('font-weight', 'bold')
+            .style('font-weight', '600')
             .attr('x', positionXContrib)
             .attr('y', positionYContrib)
             .attr('text-anchor', 'start')
@@ -149,7 +195,7 @@ export const createSvg = (
             .text(contribLabel)
             .attr('class', 'fill-fg');
 
-        const positionXStar = 260;
+        const positionXStar = 190;
         const positionYStar = positionYContrib;
 
         // icon of star
@@ -161,6 +207,7 @@ export const createSvg = (
                     positionYStar - 21
                 }), scale(1.5)`,
             )
+            .style('opacity', '0.9')
             .append('path')
             .attr('fill-rule', 'evenodd')
             .attr(
@@ -172,7 +219,7 @@ export const createSvg = (
         group
             .append('text')
             .style('font-size', '22px')
-            .style('font-weight', 'bold')
+            .style('font-weight', '600')
             .attr('x', positionXStar + 6)
             .attr('y', positionYStar)
             .attr('text-anchor', 'start')
@@ -181,7 +228,7 @@ export const createSvg = (
             .append('title')
             .text(userInfo.totalStargazerCount);
 
-        const positionXFork = 370;
+        const positionXFork = 330;
         const positionYFork = positionYContrib;
 
         // icon of fork
@@ -193,6 +240,7 @@ export const createSvg = (
                     positionYFork - 21
                 }), scale(1.5)`,
             )
+            .style('opacity', '0.9')
             .append('path')
             .attr('fill-rule', 'evenodd')
             .attr(
@@ -204,7 +252,7 @@ export const createSvg = (
         group
             .append('text')
             .style('font-size', '22px')
-            .style('font-weight', 'bold')
+            .style('font-weight', '600')
             .attr('x', positionXFork + 4)
             .attr('y', positionYFork)
             .attr('text-anchor', 'start')
